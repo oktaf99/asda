@@ -1,0 +1,35 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.todoForm-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.todoForm-container form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.todoForm-container form input {
+  width: 100%;
+  padding: 20px;
+  font-size: 1rem;
+}
+
+.todoForm-container form button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  width: 150px;
+  height: 65px;
+}
