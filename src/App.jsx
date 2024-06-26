@@ -5,29 +5,29 @@ import TodoForm from "./components/TodoForm";
 
 import "./App.css";
 
-export const TodoContext = createContext()
+export const TodoContext = createContext();
 
 const App = () => {
   const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: "Finish Progate React Course",
-      completed: false,
-    },
-    {
-      id: 2,
-      title: "Have lunch with Guru Domba",
-      completed: false,
-    },
-    {
-      id: 3,
-      title: "Study React with Ninja Ken",
-      completed: false,
-    },
+    // {
+    //   id: 1,
+    //   title: "Finish Progate React Course",
+    //   completed: false,
+    // },
+    // {
+    //   id: 2,
+    //   title: "Have lunch with Guru Domba",
+    //   completed: false,
+    // },
+    // {
+    //   id: 3,
+    //   title: "Study React with Ninja Ken",
+    //   completed: false,
+    // },
   ]);
   console.log(todos);
 
-  // Definisikan toggleCompleted di sini
+  // Toggle Completed
   const toggleCompleted = (todoId) => {
     const updatedTodos = todos.map((todo) => {
       if (todo.id === todoId) {
@@ -38,20 +38,25 @@ const App = () => {
     setTodos(updatedTodos);
   };
 
-  // Function DeleteTodo
-  const deleteTodo = (todoId) => {
-    setTodos((prevTodos) => prevTodos.filter((_, index) => index !== todoId));
+  // const deleteTodo = (todoId) => {
+  //   setTodos((prevTodos) => prevTodos.filter((_, index) => index !== todoId));
+  // };
+
+  // DeleteTodo Handler
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
-  // Definisikan function addTodo
-  const addTodo = (todoTitle) => {
-    if (todoTitle === "") {
+  // AddTodo handler
+  const addTodo = (todoTitle, todoDate) => {
+    if (todoTitle && todoDate === "" ) {
       return;
     }
 
     const newTodo = {
       id: todos.length + 1,
       title: todoTitle,
+      date: todoDate,
       completed: false,
     };
 
@@ -60,34 +65,36 @@ const App = () => {
   };
 
   return (
-    <TodoContext.Provider value={{ toggleCompleted, deleteTodo }} >
+    <TodoContext.Provider
+      value={{ toggleCompleted, deleteTodo }}
+      styles={styles.container}
+    >
       <div className="app-container">
         <h1>My Todo List</h1>
-        {/* Teruskan function toggleCompleted ke component Todos */}
         <TodoForm addTodo={addTodo} />
         <Todos
           todos={todos}
-          // toggleCompleted={toggleCompleted}
-          // deleteTodo={deleteTodo}
+          toggleCompleted={toggleCompleted}
+          deleteTodo={deleteTodo}
         />
       </div>
     </TodoContext.Provider>
   );
 };
 
-// const styles = {
-//   container: {
-//     width: "100%",
-//     display: "flex",
-//     flexDirection: "column",
-//     justifyContent: "center",
-//     alignItems: "center",
-//     textAlign: "center",
-//     padding: "12px",
-//   },
-//   title: {
-//     fontSize: "36px",
-//   },
-// };
+const styles = {
+  container: {
+    width: "100vw",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    padding: "12px",
+  },
+  title: {
+    fontSize: "36px",
+  },
+};
 
 export default App;

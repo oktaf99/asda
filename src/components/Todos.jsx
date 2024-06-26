@@ -10,7 +10,7 @@ const Todos = ({ todos, toggleCompleted, deleteTodo }) => {
           <TodoItem
             key={todo.id}
             todo={todo}
-            // Teruskan function toggleCompleted ke component TodoItem
+            styles={styles.todoItem}
             toggleCompleted={toggleCompleted}
             deleteTodo={deleteTodo}
           />
@@ -21,6 +21,15 @@ const Todos = ({ todos, toggleCompleted, deleteTodo }) => {
 };
 
 const styles = {
+  container: {
+    maxWidth: "1280px",
+    width: "100%",
+    flexWrap: "wrap",
+    display: "flex", 
+    justifyContent: "spaceBetween",
+    alignItems: "center",
+    gap: "20px",
+  },
   todoItem: {
     border: "2px solid #f4f4f4",
     fontSize: "24px",
@@ -28,7 +37,6 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
   },
-  // Tambahkan styles di bawah ini
   checkbox: {
     marginRight: "10px",
     height: "18px",

@@ -20,7 +20,8 @@ const TodoItem = ({ todo }) => {
         style={styles.checkbox}
         onChange={() => toggleCompleted(todo.id)}
       />
-      <p style={getTodoTitleStyle()}>{todo.title}</p>
+      <h3 style={getTodoTitleStyle()}>{todo.title}</h3>
+      <p style={getTodoTitleStyle()}>{todo.date}</p>
       <button style={styles.button} onClick={() => deleteTodo(todo.id)}>
         x
       </button>
@@ -31,12 +32,14 @@ const TodoItem = ({ todo }) => {
 // Salin CSS yang terbaru CSS di bawah ini
 const styles = {
   todoItem: {
-    width: "600px",
+    maxWidth: "580px",
+    width: "100%",
     border: "2px solid #f4f4f4",
     fontSize: "18px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    gap: "20px",
     padding: "5px 20px",
   },
   checkbox: {
@@ -53,7 +56,6 @@ const styles = {
     borderRadius: "100%",
     border: "none",
     cursor: "pointer",
-    fontSize: "16px",
   },
 };
 
